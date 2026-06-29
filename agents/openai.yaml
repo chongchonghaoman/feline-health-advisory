@@ -1,0 +1,4 @@
+interface:
+  display_name: "猫科健康分诊"
+  short_description: "帮助判断猫咪症状行为护理问题的急症风险和安全下一步行动"
+  default_prompt: "Use $feline-health-advisory to triage my cat health or behavior question safely. I will include age, sex/neuter status, symptom, onset, eating/drinking, urination, and possible toxin exposure; if this sounds urgent, tell me to contact a veterinarian now."

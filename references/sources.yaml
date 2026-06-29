@@ -1,0 +1,58 @@
+last_checked: "2026-06-29"
+checked_by: "codex"
+policy:
+  current_or_local_claims:
+    - "Use official veterinary, university, regulator, or public-health sources."
+    - "If current official sources cannot be verified, say so and avoid current-year or local-protocol claims."
+  professional_sources:
+    - "Do not reproduce drug doses, anesthesia protocols, or procedure steps intended for veterinarians."
+    - "Use professional sources for risk framing and explain that treatment decisions require a veterinarian."
+sources:
+  - id: "wsava-global-guidelines"
+    name: "WSAVA Global Guidelines"
+    url: "https://wsava.org/global-guidelines/"
+    version: "continuously updated"
+    topics: ["vaccination", "nutrition", "pain", "animal welfare"]
+    update_trigger: "when user asks for latest/current guidance or specific intervals"
+  - id: "wsava-vaccination-2024"
+    name: "WSAVA Vaccination Guidelines"
+    url: "https://wsava.org/global-guidelines/vaccination-guidelines/"
+    version: "2024"
+    topics: ["vaccination", "core vaccines", "non-core vaccines", "risk stratification"]
+    update_trigger: "when vaccine protocol details or current-year claims are needed"
+  - id: "aaha-aafp-feline-vaccination-2020"
+    name: "AAHA/AAFP Feline Vaccination Guidelines"
+    url: "https://catvets.com/resource/aaha-aafp-feline-vaccination-guidelines/"
+    version: "2020"
+    topics: ["feline vaccination", "core vaccines", "risk stratification"]
+    update_trigger: "when citing AAHA/AAFP specifically"
+  - id: "aafp-isfm-environmental-needs-2013"
+    name: "AAFP/ISFM Environmental Needs Guidelines"
+    url: "https://catvets.com/resource/aafp-isfm-environmental-needs-guidelines/"
+    version: "2013; JFMS 15(3):219-230"
+    topics: ["behavior", "environment", "stress", "multi-cat", "litter box"]
+    update_trigger: "when behavior or environmental guidance is revised"
+  - id: "cornell-feline-health-topics"
+    name: "Cornell Feline Health Topics"
+    url: "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics"
+    version: "continuously updated"
+    topics: ["disease education", "symptoms", "owner guidance"]
+    update_trigger: "when disease topic pages change"
+  - id: "merck-msd-vet-manual"
+    name: "Merck/MSD Veterinary Manual"
+    url: "https://www.msdvetmanual.com/"
+    version: "continuously updated"
+    topics: ["veterinary reference", "emergencies", "systems disease"]
+    update_trigger: "when using professional medical reference details"
+  - id: "aspca-poison-control"
+    name: "ASPCA Animal Poison Control"
+    url: "https://www.aspca.org/pet-care/aspca-poison-control"
+    version: "continuously updated"
+    topics: ["poisoning", "toxins", "plants", "human medications"]
+    update_trigger: "when toxin, plant, medication, or recall information is involved"
+  - id: "pet-poison-helpline"
+    name: "Pet Poison Helpline"
+    url: "https://www.petpoisonhelpline.com/"
+    version: "continuously updated"
+    topics: ["poisoning", "toxins"]
+    update_trigger: "when poison hotline alternatives are needed"
