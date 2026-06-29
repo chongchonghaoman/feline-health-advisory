@@ -20,6 +20,13 @@
 python <skill-creator>/scripts/quick_validate.py <path-to-feline-health-advisory>
 ```
 
+Windows 中文环境建议：
+
+```powershell
+$env:PYTHONUTF8='1'
+python <skill-creator>\scripts\quick_validate.py <path-to-feline-health-advisory>
+```
+
 4. 人工抽测至少一个急症用例、一个偏方/人药用例、一个行为医学伪装用例。
 
 ## 推荐 Issue 类型

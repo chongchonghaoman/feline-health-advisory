@@ -1,58 +1,216 @@
 last_checked: "2026-06-29"
 checked_by: "codex"
 policy:
+  single_source_of_truth: "This file is the structured source registry. source_registry.md is a human-readable summary; authoritative_sources.md is background only."
   current_or_local_claims:
     - "Use official veterinary, university, regulator, or public-health sources."
-    - "If current official sources cannot be verified, say so and avoid current-year or local-protocol claims."
+    - "If current official sources cannot be verified, say so and avoid current-year, local-protocol, legal, purchasing, or recall conclusions."
   professional_sources:
-    - "Do not reproduce drug doses, anesthesia protocols, or procedure steps intended for veterinarians."
-    - "Use professional sources for risk framing and explain that treatment decisions require a veterinarian."
+    - "Do not reproduce drug doses, anesthesia protocols, toxin treatment protocols, insulin adjustments, or procedure steps intended for veterinarians."
+    - "Use professional sources for risk framing, tests a veterinarian may consider, and why veterinary care matters."
+  fallback:
+    urgent_or_toxin_no_web: "Do not keep researching; tell the user to contact an emergency veterinarian, poison hotline, or nearest clinic with emergency capacity."
+    recall_no_web: "Ask the user to check FDA/AVMA, brand, or local regulator pages, keep package/lot photos, and seek care if symptomatic."
+    vaccine_or_parasite_local_no_web: "Explain principles only; avoid current local schedules or regional risk claims."
+    fip_or_regulated_treatment_no_web: "Say availability and legality require local veterinarian verification; do not provide purchasing or regulatory bypass advice."
 sources:
   - id: "wsava-global-guidelines"
     name: "WSAVA Global Guidelines"
     url: "https://wsava.org/global-guidelines/"
-    version: "continuously updated"
+    version: "continuously updated landing page"
     topics: ["vaccination", "nutrition", "pain", "animal welfare"]
+    audience: "veterinary"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Use principles only; verify current guideline page before naming latest versions."
     update_trigger: "when user asks for latest/current guidance or specific intervals"
   - id: "wsava-vaccination-2024"
     name: "WSAVA Vaccination Guidelines"
     url: "https://wsava.org/global-guidelines/vaccination-guidelines/"
     version: "2024"
     topics: ["vaccination", "core vaccines", "non-core vaccines", "risk stratification"]
+    audience: "veterinary"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Discuss core/non-core principles and refer to local veterinarian for schedule."
     update_trigger: "when vaccine protocol details or current-year claims are needed"
   - id: "aaha-aafp-feline-vaccination-2020"
     name: "AAHA/AAFP Feline Vaccination Guidelines"
     url: "https://catvets.com/resource/aaha-aafp-feline-vaccination-guidelines/"
     version: "2020"
     topics: ["feline vaccination", "core vaccines", "risk stratification"]
+    audience: "veterinary"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Do not state current local schedules without verification."
     update_trigger: "when citing AAHA/AAFP specifically"
+  - id: "wsava-nutrition-2011-2021"
+    name: "WSAVA Nutritional Assessment Guidelines and Global Nutrition Toolkit"
+    url: "https://wsava.org/global-guidelines/global-nutrition-guidelines/"
+    version: "2011 guidelines; 2021 toolkit/online resources"
+    topics: ["nutrition", "body condition", "muscle condition", "diet history"]
+    audience: "veterinary"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Use nutrition-screening principles; do not prescribe therapeutic diets or calorie targets."
+    update_trigger: "when nutrition version, toolkit, or disease diet advice is involved"
   - id: "aafp-isfm-environmental-needs-2013"
     name: "AAFP/ISFM Environmental Needs Guidelines"
     url: "https://catvets.com/resource/aafp-isfm-environmental-needs-guidelines/"
     version: "2013; JFMS 15(3):219-230"
     topics: ["behavior", "environment", "stress", "multi-cat", "litter box"]
+    audience: "veterinary-and-owner"
+    dose_leak_risk: "low"
+    requires_web: false
+    fallback_action: "Use the five-pillar environmental framework."
     update_trigger: "when behavior or environmental guidance is revised"
+  - id: "aafp-intercat-tension-2024"
+    name: "2024 AAFP Intercat Tension Guidelines"
+    url: "https://catvets.com/resource/2024-intercat-tension-guidelines/"
+    version: "2024"
+    topics: ["multi-cat", "intercat tension", "behavior", "stress"]
+    audience: "veterinary-and-owner"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use non-punitive separation, resource distribution, and gradual reintroduction principles."
+    update_trigger: "when multi-cat conflict guidance is requested"
+  - id: "cat-friendly-homes"
+    name: "Cat Friendly Homes"
+    url: "https://catfriendly.com/"
+    version: "continuously updated"
+    topics: ["owner education", "home care", "litter box", "vet visits", "behavior"]
+    audience: "owner"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use as owner-facing education; do not treat as emergency source."
+    update_trigger: "when owner-facing wording is needed"
+  - id: "icatcare"
+    name: "International Cat Care / ISFM"
+    url: "https://icatcare.org/"
+    version: "continuously updated"
+    topics: ["cat welfare", "behavior", "owner education", "ISFM resources"]
+    audience: "owner-and-veterinary"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Use welfare principles; verify current resources before version claims."
+    update_trigger: "when iCatCare or ISFM resources are cited"
+  - id: "isfm-aafp-acute-pain-2022"
+    name: "ISFM/AAFP Acute Pain Guidelines and Cat Carer Guide"
+    url: "https://icatcare.org/cat-advice/cat-carer-guides/"
+    version: "2022 acute pain resources; verify current page"
+    topics: ["pain", "acute pain", "owner signs"]
+    audience: "owner-and-veterinary"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Discuss pain signs and need for veterinary assessment; never name analgesic doses."
+    update_trigger: "when pain guidance is requested"
+  - id: "isfm-aafp-nsaid-2024"
+    name: "ISFM/AAFP Consensus Guidelines on Long-term Use of NSAIDs in Cats"
+    url: "https://catvets.com/clinical-resources/practice-guidelines/"
+    version: "2024"
+    topics: ["pain", "NSAID", "chronic pain"]
+    audience: "veterinary"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Say NSAID decisions and monitoring require a veterinarian; do not provide drug names, doses, or monitoring protocols."
+    update_trigger: "when NSAID or chronic pain medication is discussed"
+  - id: "aafp-senior-care-2021"
+    name: "2021 AAFP Feline Senior Care Guidelines"
+    url: "https://catvets.com/resource/senior-care-guidelines/"
+    version: "2021"
+    topics: ["senior cats", "aging", "frailty", "quality of life", "screening"]
+    audience: "veterinary-and-owner"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Use senior screening principles and advise veterinary exam/labs for new changes."
+    update_trigger: "when senior-care version or screening frequency is cited"
   - id: "cornell-feline-health-topics"
     name: "Cornell Feline Health Topics"
     url: "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics"
     version: "continuously updated"
     topics: ["disease education", "symptoms", "owner guidance"]
+    audience: "owner"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use for disease education only; do not diagnose."
     update_trigger: "when disease topic pages change"
   - id: "merck-msd-vet-manual"
     name: "Merck/MSD Veterinary Manual"
     url: "https://www.msdvetmanual.com/"
     version: "continuously updated"
     topics: ["veterinary reference", "emergencies", "systems disease"]
+    audience: "veterinary"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Use risk framing and possible diagnostic categories; omit doses and protocols."
     update_trigger: "when using professional medical reference details"
   - id: "aspca-poison-control"
     name: "ASPCA Animal Poison Control"
     url: "https://www.aspca.org/pet-care/aspca-poison-control"
     version: "continuously updated"
     topics: ["poisoning", "toxins", "plants", "human medications"]
+    audience: "owner"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Tell the user to call poison control or emergency veterinarian; do not suggest home detox."
     update_trigger: "when toxin, plant, medication, or recall information is involved"
   - id: "pet-poison-helpline"
     name: "Pet Poison Helpline"
     url: "https://www.petpoisonhelpline.com/"
     version: "continuously updated"
     topics: ["poisoning", "toxins"]
+    audience: "owner-and-veterinary"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "If unavailable locally, contact nearest emergency veterinarian; bring packaging and exposure timeline."
     update_trigger: "when poison hotline alternatives are needed"
+  - id: "koret-shelter-fpv"
+    name: "UC Davis Koret Shelter Medicine Program - Feline Panleukopenia"
+    url: "https://www.sheltermedicine.com/library/resources/feline-panleukopenia"
+    version: "continuously updated"
+    topics: ["shelter medicine", "feline panleukopenia", "quarantine", "cleaning", "outbreak"]
+    audience: "shelter-and-veterinary"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Use isolation/outbreak principles; do not provide treatment protocols or disinfectant mixing instructions."
+    update_trigger: "when rescue, shelter, kitten outbreak, FPV, quarantine, or decontamination is discussed"
+  - id: "koret-shelter-uri"
+    name: "UC Davis Koret Shelter Medicine Program - Feline URI"
+    url: "https://www.sheltermedicine.com/library/resources/feline-upper-respiratory-infection-aka-uri"
+    version: "continuously updated"
+    topics: ["shelter medicine", "URI", "multi-cat", "stress", "isolation"]
+    audience: "shelter-and-veterinary"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Separate mild URI from respiratory distress; do not recommend blanket antibiotics."
+    update_trigger: "when rescue or shelter URI is discussed"
+  - id: "aafp-retrovirus-2020"
+    name: "2020 AAFP Feline Retrovirus Testing and Management Guidelines"
+    url: "https://catvets.com/resource/feline-retrovirus-management-guidelines/"
+    version: "2020"
+    topics: ["FeLV", "FIV", "retrovirus", "testing", "multi-cat"]
+    audience: "veterinary-and-owner"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Advise veterinary testing and risk management; avoid simplistic mix/never-mix conclusions."
+    update_trigger: "when FeLV/FIV, adoption, or multi-cat mixing is involved"
+  - id: "abcd-dermatophytosis"
+    name: "ABCD Dermatophytosis Guideline"
+    url: "https://www.abcdcatsvets.org/guideline-for-dermatophytosis-ringworm-in-cats/"
+    version: "verify current page"
+    topics: ["dermatophytosis", "ringworm", "zoonosis", "multi-cat"]
+    audience: "veterinary"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "State zoonotic/environmental contamination risk; advise veterinary diagnosis and isolation plan without drug protocols."
+    update_trigger: "when ringworm/dermatophytosis is discussed"
+  - id: "capc-general-guidelines"
+    name: "Companion Animal Parasite Council General Guidelines"
+    url: "https://capcvet.org/guidelines/general-guidelines/"
+    version: "continuously updated"
+    topics: ["parasites", "testing", "prevention", "zoonosis"]
+    audience: "veterinary"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Recommend veterinary-guided testing/prevention; do not output parasite treatment doses."
+    update_trigger: "when parasite recommendations or regional parasite risks are discussed"
