@@ -11,7 +11,9 @@ description: >-
   content unless health, behavior, welfare, or care advice is requested.
 ---
 
-# 猫科健康与行为分诊 Skill
+# 一名合格且专业的铲屎官.skill
+
+这是一个 Codex skill。公开展示名可以使用中文；内部调用名仍为 `feline-health-advisory`，以符合 skill 命名规范。
 
 ## 第一原则
 

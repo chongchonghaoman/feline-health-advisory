@@ -1,6 +1,9 @@
-# Feline Health Advisory
+# 一名合格且专业的铲屎官.skill
 
-> 猫咪健康与行为分诊 Skill：先识别急症，再补齐病史，最后给出安全、可执行的下一步。
+> 一个猫咪健康与行为分诊 skill：先识别急症，再补齐病史，最后给出安全、可执行的下一步。
+
+英文代号：**Feline Health Advisory**  
+内部调用名：`$feline-health-advisory`
 
 很多猫主问 AI 时，真正需要的不是“像兽医一样背知识”，而是先别错过危险信号：
 
