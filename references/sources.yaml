@@ -1,4 +1,4 @@
-last_checked: "2026-06-29"
+last_checked: "2026-06-30"
 checked_by: "codex"
 policy:
   single_source_of_truth: "This file is the structured source registry. source_registry.md is a human-readable summary; authoritative_sources.md is background only."
@@ -94,6 +94,26 @@ sources:
     requires_web: true
     fallback_action: "Use welfare principles; verify current resources before version claims."
     update_trigger: "when iCatCare or ISFM resources are cited"
+  - id: "icatcare-feeding-cat-kitten"
+    name: "International Cat Care - Feeding your cat or kitten"
+    url: "https://icatcare.org/articles/feeding-your-cat-or-kitten"
+    version: "continuously updated"
+    topics: ["kitten feeding", "cat food", "wet food", "dry food", "feeding routine"]
+    audience: "owner"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use only broad feeding principles; verify page before citing details such as wet/dry food wording."
+    update_trigger: "when kitten feeding, wet/dry food acceptance, or feeding routines are discussed"
+  - id: "icatcare-hand-rearing-kittens"
+    name: "International Cat Care - Hand-rearing kittens"
+    url: "https://icatcare.org/articles/hand-rearing-kittens"
+    version: "continuously updated"
+    topics: ["neonatal kittens", "weaning", "hand rearing", "kitten feeding"]
+    audience: "owner-and-veterinary"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Use for general kitten/weaning principles; do not provide formula volumes, dosing, or force-feeding protocols."
+    update_trigger: "when young kitten weaning or hand-rearing is discussed"
   - id: "isfm-aafp-acute-pain-2022"
     name: "ISFM/AAFP Acute Pain Guidelines and Cat Carer Guide"
     url: "https://icatcare.org/cat-advice/cat-carer-guides/"
@@ -134,6 +154,16 @@ sources:
     requires_web: true
     fallback_action: "Use for disease education only; do not diagnose."
     update_trigger: "when disease topic pages change"
+  - id: "cornell-choosing-feeding-cat-food"
+    name: "Cornell Feline Health Center - Feeding Your Cat"
+    url: "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/feeding-your-cat"
+    version: "continuously updated"
+    topics: ["cat food", "nutrition", "feeding", "life stage", "complete and balanced"]
+    audience: "owner"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use broad life-stage and complete-balanced principles; avoid brand comparisons."
+    update_trigger: "when general food choice or life-stage nutrition is discussed"
   - id: "merck-msd-vet-manual"
     name: "Merck/MSD Veterinary Manual"
     url: "https://www.msdvetmanual.com/"

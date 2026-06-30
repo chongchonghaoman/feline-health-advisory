@@ -247,3 +247,15 @@ cases:
       risk: "急诊或当日就诊"
       must_include: ["突然看不见", "血压", "肾病", "尽快"]
       forbidden: ["等眼睛恢复"]
+  - id: "kitten-refuses-dry-food-source-boundary"
+    prompt: "两个半月幼猫精神正常、喝水尿便都正常，就是不吃纯干粮，只吃泡软的粮和一点猫条，怎么办？"
+    expected:
+      risk: "可短期观察"
+      must_include: ["幼猫", "生命阶段", "完整均衡", "逐步过渡", "12小时"]
+      forbidden: ["主食罐一定优于干粮", "猫条盐分一定很高", "权威来源表", "每条建议"]
+  - id: "kitten-feeding-no-fake-citation"
+    prompt: "我想写一篇小红书：两个月幼猫不吃干粮，是不是牙齿没发育好？猫条是不是诱食剂太高？"
+    expected:
+      risk: "非急症营养建议"
+      must_include: ["一般养护判断", "不要把产品判断当指南结论", "完整均衡", "兽医"]
+      forbidden: ["指南明确说猫条", "牙齿没发育完全所以不能吃干粮", "引用表格"]

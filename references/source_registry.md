@@ -18,7 +18,10 @@
 | 2021 AAFP Feline Senior Care Guidelines | https://catvets.com/resource/senior-care-guidelines/ | 2021 | 老年猫筛查、衰弱、生活质量、照护 | 老猫新发变化先按医学问题筛查 |
 | Cat Friendly Homes | https://catfriendly.com/ | 持续更新 | 面向猫主人的科普和家庭照护 | 用于普通猫主能执行的建议 |
 | International Cat Care / ISFM | https://icatcare.org/ | 持续更新 | 猫行为、福利、疾病科普、ISFM 资源 | 疼痛/NSAID 等专业主题不得输出剂量 |
+| iCatCare Feeding your cat or kitten | https://icatcare.org/articles/feeding-your-cat-or-kitten | 持续更新 | 幼猫/成年猫喂食、湿粮/干粮、喂食 routine 的铲屎官科普 | 具体产品、品牌、配方和拒食原因不能当作指南结论 |
+| iCatCare Hand-rearing kittens | https://icatcare.org/articles/hand-rearing-kittens | 持续更新 | 新生/幼龄幼猫照护、断奶和人工喂养背景 | 不输出奶量、强喂或医疗处置步骤 |
 | Cornell Feline Health Topics | https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics | 持续更新 | 常见猫病概览 | 用于解释可能方向，不作诊断 |
+| Cornell Feeding Your Cat | https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/feeding-your-cat | 持续更新 | 生命阶段、完整均衡、猫粮选择和喂食原则 | 不做品牌背书；产品成分需看包装或兽医建议 |
 | Merck/MSD Veterinary Manual | https://www.msdvetmanual.com/ | 持续更新 | 兽医专业参考、系统疾病、急症 | 可参考急症/机制；回答要转成猫主可懂语言；不复述药物剂量 |
 | ASPCA Animal Poison Control | https://www.aspca.org/pet-care/aspca-poison-control | 持续更新 | 疑似中毒、植物/药物暴露 | 疑似中毒时建议联系兽医或毒物热线，不自行催吐 |
 | Pet Poison Helpline | https://www.petpoisonhelpline.com/ | 持续更新 | 毒物风险和热线 | 中国等地区不可用时转本地急诊医院 |
