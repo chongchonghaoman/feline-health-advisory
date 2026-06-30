@@ -113,20 +113,35 @@
 
 你需要：已安装 Codex、能打开终端/PowerShell、能访问 GitHub。不会安装也没关系，先用上面的复制模板。
 
-把这个仓库放到你的 Codex skills 目录中：
+把这个仓库放到你的 Codex 或 WorkBuddy skills 目录中。
+
+Codex 示例：
 
 ```bash
 git clone https://github.com/chongchonghaoman/feline-health-advisory.git ~/.codex/skills/feline-health-advisory
 ```
 
-Windows 示例：
+Windows / Codex 示例：
 
 ```powershell
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.codex\skills"
 git clone https://github.com/chongchonghaoman/feline-health-advisory.git "$env:USERPROFILE\.codex\skills\feline-health-advisory"
 ```
 
-然后关闭并重启 Codex，在对话里显式调用：
+WorkBuddy 示例：
+
+```bash
+git clone https://github.com/chongchonghaoman/feline-health-advisory.git ~/.workbuddy/skills/feline-health-advisory
+```
+
+Windows / WorkBuddy 示例：
+
+```powershell
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.workbuddy\skills"
+git clone https://github.com/chongchonghaoman/feline-health-advisory.git "$env:USERPROFILE\.workbuddy\skills\feline-health-advisory"
+```
+
+然后关闭并重启对应应用，在对话里显式调用：
 
 ```text
 Use $feline-health-advisory：我家猫今天一直蹲猫砂盆，但尿很少。

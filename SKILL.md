@@ -13,7 +13,7 @@ description: >-
 
 # 一名合格且专业的铲屎官.skill
 
-这是一个 Codex skill。公开展示名可以使用中文；内部调用名仍为 `feline-health-advisory`，以符合 skill 命名规范。
+这是一个可被 Codex/WorkBuddy 等支持本地 skills 的环境加载的 skill。公开展示名可以使用中文；内部调用名仍为 `feline-health-advisory`，以符合 skill 命名规范。
 
 ## 第一原则
 
@@ -58,7 +58,8 @@ description: >-
 | 总是先读 | `references/triage_red_flags.md`、`references/intake_questions.md` |
 | 需要引用机构/指南前读 | `references/source_registry.md` |
 | 选择主题和回答重点时读 | `references/scenario_routes.md` |
-| 维护或深挖背景时读 | `references/authoritative_sources.md`、`references/sources.yaml`、`references/maintenance.md` |
+| 维护时读 | `references/maintenance.md` |
+| 深挖来源背景时读 | `references/authoritative_sources.md`、`references/sources.yaml` |
 
 主题路由：
 

@@ -54,6 +54,26 @@ sources:
     requires_web: true
     fallback_action: "Use nutrition-screening principles; do not prescribe therapeutic diets or calorie targets."
     update_trigger: "when nutrition version, toolkit, or disease diet advice is involved"
+  - id: "wsava-pain-2022"
+    name: "WSAVA Pain Management Guidelines"
+    url: "https://wsava.org/global-guidelines/pain-guidelines/"
+    version: "2022"
+    topics: ["pain", "acute pain", "chronic pain", "pain recognition", "welfare"]
+    audience: "veterinary"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Use pain-recognition and welfare principles; do not provide analgesic names, doses, or protocols."
+    update_trigger: "when WSAVA pain guidance is cited"
+  - id: "wsava-hereditary-disease-2023"
+    name: "WSAVA Hereditary Disease Guidelines"
+    url: "https://wsava.org/global-guidelines/hereditary-disease/"
+    version: "2023"
+    topics: ["hereditary disease", "genetic testing", "breed risk", "screening"]
+    audience: "veterinary"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use genetic-testing principles only; breed-specific risk and test selection require veterinarian or specialist confirmation."
+    update_trigger: "when breed-linked hereditary disease or genetic testing is discussed"
   - id: "aafp-isfm-environmental-needs-2013"
     name: "AAFP/ISFM Environmental Needs Guidelines"
     url: "https://catvets.com/resource/aafp-isfm-environmental-needs-guidelines/"
@@ -174,6 +194,26 @@ sources:
     requires_web: true
     fallback_action: "Use risk framing and possible diagnostic categories; omit doses and protocols."
     update_trigger: "when using professional medical reference details"
+  - id: "elsevier-the-cat-2024"
+    name: "The Cat: Clinical Medicine and Management, 2nd Edition"
+    url: "https://shop.elsevier.com/books/the-cat/little/978-0-323-49687-2"
+    version: "2024"
+    topics: ["feline medicine", "textbook", "clinical background", "systems disease"]
+    audience: "veterinary-textbook"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Treat as background only unless text is accessible and verified; do not reproduce treatment protocols or doses."
+    update_trigger: "when this textbook is explicitly cited as background"
+  - id: "bsava-manual-feline-practice"
+    name: "BSAVA Manual of Feline Practice"
+    url: "https://www.bsavalibrary.com/content/book/10.22233/9781910443149"
+    version: "verify current edition/page"
+    topics: ["feline practice", "textbook", "clinical workflow", "diagnostics"]
+    audience: "veterinary-textbook"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Treat as professional background only; do not turn veterinary procedures into home instructions."
+    update_trigger: "when this manual is explicitly cited as background"
   - id: "aspca-poison-control"
     name: "ASPCA Animal Poison Control"
     url: "https://www.aspca.org/pet-care/aspca-poison-control"

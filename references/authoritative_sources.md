@@ -137,6 +137,7 @@
 
 ## 七、The Cat: Clinical Medicine and Management, 2nd Edition
 
+**登记 ID**：`elsevier-the-cat-2024`
 **主编**：Susan E. Little, DVM, DABVP (Feline)
 **出版社**：Elsevier, 2024（原版 2012 年第一版）
 **定位**：猫专科临床医学大部头，兽医教科书级别
@@ -160,6 +161,7 @@
 
 ## 八、BSAVA Manual of Feline Practice
 
+**登记 ID**：`bsava-manual-feline-practice`
 **全称**：British Small Animal Veterinary Association
 **定位**：一线兽医诊疗实践手册，操作性强
 
