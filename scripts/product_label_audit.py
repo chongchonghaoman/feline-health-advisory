@@ -58,6 +58,27 @@ LABEL_PATTERNS = [
 
 LABEL_RE = re.compile("|".join(LABEL_PATTERNS), re.I)
 
+STRONG_LABEL_PATTERNS = [
+    r"原料组成",
+    r"配料(?:表)?",
+    r"添加剂组成",
+    r"营养成分",
+    r"成分分析(?:保证值)?",
+    r"产品成分分析保证值",
+    r"粗蛋白",
+    r"粗脂肪",
+    r"粗纤维",
+    r"粗灰分",
+    r"牛磺酸",
+    r"产品标准",
+    r"生产许可证",
+    r"生产企业",
+    r"进口登记",
+    r"备案",
+]
+
+STRONG_LABEL_RE = re.compile("|".join(STRONG_LABEL_PATTERNS), re.I)
+
 SOURCE_SCORE_PATTERNS = [
     (re.compile(r"原料|配料|成分|保证值|背标|详情|包装|营养|标签|label", re.I), 6),
     (re.compile(r"主食|全价|猫饭|猫粮|餐盒|餐包|罐|猫条|湿粮", re.I), 3),
@@ -161,9 +182,56 @@ def ocr_image(path: Path, lang: str = "chi_sim+eng", psm: str = "11") -> tuple[s
     return proc.stdout, warnings
 
 
-def extract_label_hits(text: str, window: int = 2) -> list[str]:
+def preprocess_image_variants(path: Path, out_dir: Path) -> list[Path]:
+    variants = [path]
+    try:
+        from PIL import Image, ImageEnhance, ImageFilter, ImageOps
+    except Exception:
+        return variants
+
+    try:
+        image = Image.open(path)
+        image.load()
+    except Exception:
+        return variants
+
+    rgb = image.convert("RGB")
+    gray = ImageOps.grayscale(rgb)
+    scale = 2 if max(gray.size) < 2200 else 1
+    if scale > 1:
+        gray = gray.resize((gray.width * scale, gray.height * scale))
+
+    processed = ImageEnhance.Contrast(gray).enhance(1.8)
+    processed = ImageEnhance.Sharpness(processed).enhance(1.7)
+    processed = processed.filter(ImageFilter.SHARPEN)
+    processed_path = out_dir / f"{path.stem}.ocr.png"
+    processed.save(processed_path)
+    variants.append(processed_path)
+
+    inverted = ImageOps.invert(processed)
+    inverted_path = out_dir / f"{path.stem}.ocr-invert.png"
+    inverted.save(inverted_path)
+    variants.append(inverted_path)
+    return variants
+
+
+def ocr_image_best(path: Path, out_dir: Path) -> tuple[str, list[str], list[str]]:
+    warnings: list[str] = []
+    texts: list[str] = []
+    variants = preprocess_image_variants(path, out_dir)
+    for variant in variants:
+        for psm in ("6", "11"):
+            text, local_warnings = ocr_image(variant, psm=psm)
+            if text.strip():
+                texts.append(f"--- OCR {variant.name} psm={psm} ---\n{text}")
+            warnings.extend(local_warnings)
+    merged = "\n".join(texts)
+    return merged, warnings, [str(p) for p in variants]
+
+
+def extract_label_hits(text: str, window: int = 2, pattern: re.Pattern[str] = LABEL_RE) -> list[str]:
     lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
-    hit_indexes = [i for i, ln in enumerate(lines) if LABEL_RE.search(ln)]
+    hit_indexes = [i for i, ln in enumerate(lines) if pattern.search(ln)]
     selected: list[str] = []
     seen: set[str] = set()
     for idx in hit_indexes:
@@ -303,14 +371,20 @@ def main() -> int:
             results.append(item)
             continue
         path = Path(str(item["path"]))
-        text, warnings = ocr_image(path)
+        text, warnings, variants = ocr_image_best(path, out_dir)
         hits = extract_label_hits(text)
+        strong_hits = extract_label_hits(text, pattern=STRONG_LABEL_RE)
+        text_path = out_dir / f"{path.stem}.ocr.txt"
+        text_path.write_text(text, encoding="utf-8")
         results.append(
             {
                 **item,
                 "ocr_chars": len(text),
                 "label_hits": hits,
-                "has_label_evidence": bool(hits),
+                "strong_label_hits": strong_hits,
+                "has_label_evidence": bool(strong_hits),
+                "ocr_text_path": str(text_path),
+                "ocr_variants": variants,
                 "warnings": warnings,
             }
         )

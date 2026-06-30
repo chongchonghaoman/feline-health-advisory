@@ -32,6 +32,9 @@ IMAGE_RE = re.compile(
     r"https?://[^\s'\"<>]+?\.(?:jpg|jpeg|png|webp)(?:[^\s'\"<>]*)?",
     re.I,
 )
+URL_RE = re.compile(r"https?://\S+", re.I)
+ASCII_WORD_RE = re.compile(r"[A-Za-z][A-Za-z0-9+&/-]{1,}")
+ITEM_ID_RE = re.compile(r"(?:id|itemNumId|skuId)=([0-9]{5,})|(?<!\d)([0-9]{9,})(?!\d)")
 
 PLATFORMS = {
     "0": "all",
@@ -82,6 +85,7 @@ def run_command(args: list[str], cwd: Path, timeout: int = 120) -> str:
         text=True,
         encoding="utf-8",
         errors="replace",
+        env={**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"},
         timeout=timeout,
     )
     text = (proc.stdout or "") + ("\n" + proc.stderr if proc.stderr else "")
@@ -175,6 +179,8 @@ def run_label_ocr(query: str, image_urls: list[str], limit: int, timeout: int = 
                         "local_image": item.get("path"),
                         "label_hits": item.get("label_hits", []),
                         "ocr_chars": item.get("ocr_chars", 0),
+                        "ocr_text_path": item.get("ocr_text_path", ""),
+                        "ocr_variants": item.get("ocr_variants", []),
                     }
                 )
         results.append(
@@ -188,12 +194,136 @@ def run_label_ocr(query: str, image_urls: list[str], limit: int, timeout: int = 
     return results
 
 
+def label_found(candidates: list[dict[str, Any]]) -> bool:
+    for item in candidates:
+        for audit in item.get("label_ocr", []):
+            if audit.get("has_label_evidence"):
+                return True
+    return False
+
+
+def label_status(item: dict[str, Any]) -> str:
+    if not item.get("detail"):
+        return "detail_not_fetched"
+    detail = item.get("detail") or {}
+    if not detail.get("image_urls"):
+        return "no_detail_images"
+    if "label_ocr" not in item:
+        return "ocr_not_run"
+    for audit in item.get("label_ocr", []):
+        if audit.get("has_label_evidence"):
+            return "label_candidate_found"
+    return "no_label_candidate_in_detail_images"
+
+
+def unique_preserve(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    out: list[str] = []
+    for value in values:
+        key = value.strip()
+        if key and key.lower() not in seen:
+            seen.add(key.lower())
+            out.append(key)
+    return out
+
+
+def extract_ascii_phrase(text: str) -> str:
+    words = [w.strip("-_/") for w in ASCII_WORD_RE.findall(text)]
+    words = [w for w in words if len(w) > 1]
+    return " ".join(unique_preserve(words)[:8])
+
+
+def extract_numeric_ids(text: str) -> list[str]:
+    ids: list[str] = []
+    for match in ITEM_ID_RE.finditer(text):
+        value = match.group(1) or match.group(2)
+        if value:
+            ids.append(value)
+    return unique_preserve(ids)
+
+
+def clean_search_keyword(text: str) -> str:
+    cleaned = URL_RE.sub(" ", text)
+    cleaned = re.sub(r"\b(?:id|itemNumId|skuId)=[0-9]{5,}\b", " ", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned or text.strip()
+
+
+def web_queries(keyword: str, candidates: list[dict[str, Any]], search_keyword: str | None = None) -> list[str]:
+    base = search_keyword or keyword
+    titles = [base]
+    for item in candidates[:3]:
+        title = item.get("title", "")
+        if title and title not in titles:
+            titles.append(title)
+    suffixes = ["配料表", "原料组成", "成分分析保证值", "背标", "包装背面", "详情图", "产品标准"]
+    queries: list[str] = []
+    for item_id in extract_numeric_ids(keyword):
+        queries.extend(
+            [
+                f'"{item_id}" "配料"',
+                f'"{item_id}" "原料组成"',
+                f'"{item_id}" "背标"',
+                f'"{item_id}" "详情图"',
+            ]
+        )
+    for title in titles:
+        for suffix in suffixes:
+            queries.append(f'"{title}" "{suffix}"')
+        english = extract_ascii_phrase(title)
+        if english:
+            queries.extend(
+                [
+                    f'"{english}" "composition"',
+                    f'"{english}" "analytical constituents"',
+                    f'"{english}" "ingredients"',
+                    f'"{english}" "complementary pet food"',
+                    f'"{english}" official',
+                ]
+            )
+    brand_terms = " ".join(titles[:2])
+    queries.extend(
+        [
+            f'{brand_terms} site:tmall.com 配料',
+            f'{brand_terms} site:jd.com 配料',
+            f'{brand_terms} site:yangkeduo.com 配料',
+            f'{brand_terms} site:xiaohongshu.com 背标',
+            f'{brand_terms} 官方 配料 保证分析',
+        ]
+    )
+    seen: set[str] = set()
+    return [q for q in queries if not (q in seen or seen.add(q))]
+
+
+def next_actions(payload: dict[str, Any]) -> list[str]:
+    if payload.get("label_found"):
+        return [
+            "人工核对 OCR 命中的图片是否为同一 SKU、同一规格、同一口味、同一生命阶段。",
+            "把配料/添加剂/保证分析/适用阶段/标准号逐项摘录，不能只摘卖点文案。",
+        ]
+    top = payload.get("candidates", [])[:3]
+    actions = [
+        "打开候选商品购买链接或原平台详情页，在已登录浏览器里查看规格选择和详情长图。",
+        "优先保存这些图：规格选择截图、商品详情长截图、包装背面/中文标签/保证分析图。",
+        "把保存的本地图片交给 product_label_audit.py：python scripts/product_label_audit.py --query \"商品名\" --image \"图片路径\"",
+        "如果平台详情仍没有背标，问旗舰店客服要：配料表、添加剂组成、产品成分分析保证值、适用生命阶段、中文标签照片。",
+        "客服不给或只给卖点图时，把该商品标为 D 级证据，不给 mobi 做主食推荐。",
+    ]
+    for item in top:
+        detail = item.get("detail") or {}
+        link = detail.get("purchase_link")
+        if link:
+            actions.append(f"优先核对候选 {item.get('idx')}: {link}")
+    return actions
+
+
 def build_probe(args: argparse.Namespace) -> dict[str, Any]:
     maishou_dir = find_maishou_dir(args.maishou_dir)
+    search_keyword = clean_search_keyword(args.keyword)
     search_text = maishou_command(
         maishou_dir,
         "search",
-        ["--source", str(args.source), "--keyword", args.keyword],
+        ["--source", str(args.source), "--keyword", search_keyword],
     )
     rows = parse_search_csv(search_text)[: args.top]
     candidates: list[dict[str, Any]] = []
@@ -222,22 +352,31 @@ def build_probe(args: argparse.Namespace) -> dict[str, Any]:
             images = detail.get("image_urls") or ([row.get("picUrl", "")] if row.get("picUrl") else [])
             if args.ocr:
                 item["label_ocr"] = run_label_ocr(item["title"] or args.keyword, images, args.ocr_images)
+            item["label_status"] = label_status(item)
         candidates.append(item)
-    return {
+    payload = {
         "keyword": args.keyword,
+        "search_keyword": search_keyword,
         "source": str(args.source),
         "source_name": PLATFORMS.get(str(args.source), str(args.source)),
         "maishou_dir": str(maishou_dir),
         "search_count": len(rows),
         "candidates": candidates,
     }
+    payload["label_found"] = label_found(candidates)
+    payload["web_queries"] = web_queries(args.keyword, candidates, search_keyword)[: args.query_limit]
+    payload["next_actions"] = next_actions(payload)
+    return payload
 
 
 def print_text(payload: dict[str, Any]) -> None:
     print(f"keyword: {payload['keyword']}")
+    if payload.get("search_keyword") and payload.get("search_keyword") != payload.get("keyword"):
+        print(f"search_keyword: {payload['search_keyword']}")
     print(f"source: {payload['source_name']}")
     print(f"maishou_dir: {payload['maishou_dir']}")
     print(f"search_count: {payload['search_count']}")
+    print(f"label_found: {payload.get('label_found')}")
     print("")
     for item in payload["candidates"]:
         print(f"[{item['idx']}] {item['title']}")
@@ -248,6 +387,8 @@ def print_text(payload: dict[str, Any]) -> None:
             f"sales={item['month_sales']}"
         )
         print(f"  goods_id={item['goods_id']}")
+        if item.get("label_status"):
+            print(f"  label_status={item['label_status']}")
         if item.get("pic_url"):
             print(f"  pic={item['pic_url']}")
         detail = item.get("detail") or {}
@@ -262,9 +403,18 @@ def print_text(payload: dict[str, Any]) -> None:
             if audit.get("has_label_evidence"):
                 print(f"  label_candidate={audit.get('image')}")
                 for hit in audit.get("hits", []):
+                    if hit.get("ocr_text_path"):
+                        print(f"    ocr_text={hit['ocr_text_path']}")
                     for line in hit.get("label_hits", [])[:12]:
                         print(f"    {line}")
         print("")
+    print("web_queries:")
+    for query in payload.get("web_queries", [])[:20]:
+        print(f"  - {query}")
+    print("")
+    print("next_actions:")
+    for action in payload.get("next_actions", []):
+        print(f"  - {action}")
 
 
 def main() -> int:
@@ -275,15 +425,24 @@ def main() -> int:
     parser.add_argument("--detail-top", type=int, default=3, help="Fetch details for the first N candidates.")
     parser.add_argument("--ocr", action="store_true", help="Run product_label_audit OCR on detail images.")
     parser.add_argument("--ocr-images", type=int, default=5, help="Max images per detailed candidate to OCR.")
+    parser.add_argument("--query-limit", type=int, default=30, help="Max follow-up web search queries to emit.")
+    parser.add_argument("--require-label", action="store_true", help="Exit 2 if no label-like OCR evidence is found.")
+    parser.add_argument("--report", help="Write the full JSON evidence package to this file.")
     parser.add_argument("--maishou-dir", help="Override installed maishou skill directory.")
     parser.add_argument("--json", action="store_true", help="Emit JSON instead of text.")
     args = parser.parse_args()
 
     payload = build_probe(args)
+    if args.report:
+        report_path = Path(args.report).expanduser()
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     if args.json:
         print(json.dumps(payload, ensure_ascii=False, indent=2))
     else:
         print_text(payload)
+    if args.require_label and not payload.get("label_found"):
+        return 2
     return 0
 
 

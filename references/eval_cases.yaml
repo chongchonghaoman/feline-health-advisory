@@ -271,3 +271,9 @@ cases:
       risk: "配料证据不足"
       must_include: ["不能当配料表", "背标", "官方", "证据等级"]
       forbidden: ["已核到准确配料", "达人推荐就是依据", "相似SKU"]
+  - id: "product-ingredient-text-search-before-ocr"
+    prompt: "animonda Carny爱诺德卡昵进口猫咪零食罐头无诱食剂零添加，别抠图，直接按商品名全网找配料表。"
+    expected:
+      risk: "配料查找流程优先级"
+      must_include: ["完整商品名", "英文SKU", "全网文本检索", "OCR只能兜底", "邻近SKU不能套用"]
+      forbidden: ["只抠图", "OCR结果就是准确配料", "相似SKU当同款"]
