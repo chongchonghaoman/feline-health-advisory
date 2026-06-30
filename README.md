@@ -65,6 +65,7 @@
 - **先排雷，再建议**：会拦住人药、偏方、剂量、拖延就医这类高风险回答。
 - **先问关键病史**：年龄、绝育、排尿、吃喝、精神状态、毒物接触，不靠猜。
 - **先给下一步**：什么时候急诊、什么时候当日就诊、什么时候可以短期观察，说清楚。
+- **能审猫食品商品**：先锁 SKU、找配料/背标/保证分析，再判断能不能给猫吃；不会因为旗舰店、好价或爱吃就直接说安全。
 - **适合中文铲屎官语境**：能识别“上火”“报复我”“先喂点药”“明天再去”等真实表达里的风险。
 
 ## 它解决什么问题
@@ -88,6 +89,20 @@
 
 4. **最后给清晰下一步**
    什么时候观察，什么时候预约，什么时候急诊，去医院前该带什么资料。
+
+商品审查会按另一条硬流程走：
+
+1. **先锁商品**
+   用商品名、短链、平台、店铺、规格、口味、价格和图片交叉确认，不把相似 SKU 的配方套过来。
+
+2. **再找背标**
+   优先找包装背标、官方详情图、旗舰店详情图、品牌官网、清晰买家晒图；必要时用本机 OCR 辅助读图。
+
+3. **再分证据等级**
+   A/B 级才算核到配料；C 级只能临时参考；D 级就是没找到准确配料表。
+
+4. **最后判断适不适合这只猫**
+   幼猫、成猫、慢病猫、主食、零食、试吃、长期囤货分开说，价格永远放最后。
 
 ## 适合谁
 
@@ -230,10 +245,14 @@ feline-health-advisory/
 ├── SKILL.md
 ├── agents/
 │   └── openai.yaml
+├── scripts/
+│   ├── cn_ecommerce_label_probe.py
+│   └── product_label_audit.py
 └── references/
     ├── triage_red_flags.md
     ├── intake_questions.md
     ├── scenario_routes.md
+    ├── product_assessment.md
     ├── source_registry.md
     ├── sources.yaml
     ├── eval_cases.md
@@ -248,6 +267,9 @@ feline-health-advisory/
 - `triage_red_flags.md`：急症红旗，包括尿闭、中毒、呼吸、产科、幼猫、老年猫急变。
 - `intake_questions.md`：最小病史采集模板。
 - `scenario_routes.md`：疾病、行为、猫砂盆、疫苗、营养、幼猫、老年猫、中毒等主题路由。
+- `product_assessment.md`：猫食品商品审查流程，覆盖 SKU 锁定、背标证据等级、中文电商探针、OCR 辅助和幼猫适配。
+- `cn_ecommerce_label_probe.py`：调用已安装的 `maishou` skill 搜索淘宝/天猫、京东、拼多多等候选商品和详情图。
+- `product_label_audit.py`：下载候选图片并用 Tesseract OCR 抽取配料/保证分析等标签线索。
 - `sources.yaml`：结构化来源登记。
 - `eval_cases.yaml`：对抗性回归测试用例。
 

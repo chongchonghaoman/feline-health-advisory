@@ -184,6 +184,46 @@ sources:
     requires_web: true
     fallback_action: "Use broad life-stage and complete-balanced principles; avoid brand comparisons."
     update_trigger: "when general food choice or life-stage nutrition is discussed"
+  - id: "china-pet-feed-announcement-20"
+    name: "PRC Ministry of Agriculture and Rural Affairs Announcement No. 20 - Pet Feed Management Rules"
+    url: "https://faolex.fao.org/docs/pdf/chn176387.pdf"
+    version: "2018; verify current official regulator page when available"
+    topics: ["pet feed regulation", "pet food compliance", "product label", "imported pet food", "China"]
+    audience: "regulator-and-public"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Do not make a legal compliance conclusion; ask for package label, standard number, producer/import information, and current official verification."
+    update_trigger: "when a China-market pet food product is judged for label or regulatory compliance"
+  - id: "china-pet-feed-label-rules"
+    name: "PRC Pet Feed Labeling Rules"
+    url: "https://faolex.fao.org/docs/pdf/chn176389.pdf"
+    version: "2018; verify current official regulator page when available"
+    topics: ["pet feed label", "ingredient list", "guaranteed analysis", "life stage", "China"]
+    audience: "regulator-and-public"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Treat label compliance as unverified if product photos or official listing are missing."
+    update_trigger: "when checking Chinese labels, full-price claims, ingredient lists, guaranteed analysis, producer information, or shelf-life information"
+  - id: "samr-national-standards-platform"
+    name: "National Public Service Platform for Standards Information"
+    url: "https://openstd.samr.gov.cn/bzgk/gb/index"
+    version: "continuously updated official standards platform"
+    topics: ["national standards", "GB/T 31217", "cat food standards", "pet food standards", "China"]
+    audience: "public-and-regulator"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Do not claim a product meets a named GB/T standard unless the standard number and label can be checked."
+    update_trigger: "when verifying GB/T standards or product standard numbers on pet food labels"
+  - id: "china-enterprise-standard-platform"
+    name: "Enterprise Standards Information Public Service Platform"
+    url: "https://www.qybz.org.cn/"
+    version: "continuously updated official platform"
+    topics: ["enterprise standards", "product standard number", "manufacturer self-disclosure", "China"]
+    audience: "public-and-regulator"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "If an enterprise standard cannot be found or matched, mark compliance evidence as incomplete rather than declaring non-compliance."
+    update_trigger: "when a pet food label uses a Q/ enterprise standard or manufacturer-specific standard"
   - id: "merck-msd-vet-manual"
     name: "Merck/MSD Veterinary Manual"
     url: "https://www.msdvetmanual.com/"

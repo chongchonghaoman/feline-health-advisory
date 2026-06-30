@@ -26,6 +26,10 @@
 | iCatCare Hand-rearing kittens | https://icatcare.org/articles/hand-rearing-kittens | 持续更新 | 新生/幼龄幼猫照护、断奶和人工喂养背景 | 不输出奶量、强喂或医疗处置步骤 |
 | Cornell Feline Health Topics | https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics | 持续更新 | 常见猫病概览 | 用于解释可能方向，不作诊断 |
 | Cornell Feeding Your Cat | https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/feeding-your-cat | 持续更新 | 生命阶段、完整均衡、猫粮选择和喂食原则 | 不做品牌背书；产品成分需看包装或兽医建议 |
+| PRC Ministry of Agriculture and Rural Affairs Announcement No. 20 - Pet Feed Management Rules | https://faolex.fao.org/docs/pdf/chn176387.pdf | 2018，需按官方监管页面核验现行状态 | 中国市场宠物饲料管理、标签、进口和合规背景 | 用于产品合规框架；无法核验当前官方页面或包装标签时，不下法律合规结论 |
+| PRC Pet Feed Labeling Rules | https://faolex.fao.org/docs/pdf/chn176389.pdf | 2018，需按官方监管页面核验现行状态 | 宠物饲料标签、原料组成、成分分析保证值、适用阶段等 | 检查商品标签完整性；没有包装背面/详情页证据时标为未核 |
+| National Public Service Platform for Standards Information | https://openstd.samr.gov.cn/bzgk/gb/index | 持续更新官方平台 | GB/T 等国家标准查询，含宠物食品相关标准 | 只有看到标签标准号并能核验时，才说符合某标准 |
+| Enterprise Standards Information Public Service Platform | https://www.qybz.org.cn/ | 持续更新官方平台 | 企业标准号、生产企业自我声明公开信息 | Q/ 企业标准查不到或对不上时，说合规证据不完整，不直接定性违法 |
 | Merck/MSD Veterinary Manual | https://www.msdvetmanual.com/ | 持续更新 | 兽医专业参考、系统疾病、急症 | 可参考急症/机制；回答要转成猫主可懂语言；不复述药物剂量 |
 | The Cat: Clinical Medicine and Management, 2nd Edition | https://shop.elsevier.com/books/the-cat/little/978-0-323-49687-2 | 2024 | 猫专科临床医学教材背景 | 仅作背景；不复述治疗方案、药物剂量或操作步骤 |
 | BSAVA Manual of Feline Practice | https://www.bsavalibrary.com/content/book/10.22233/9781910443149 | 按页面核验 | 猫临床实践手册背景 | 仅作专业背景；不要把兽医流程改写成家庭操作 |

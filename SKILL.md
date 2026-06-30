@@ -3,12 +3,13 @@ name: feline-health-advisory
 description: >-
   猫科健康与行为分诊咨询 Skill。Use when the user asks about cats or kittens
   involving symptoms, disease risk, injury, poisoning, behavior, litter box
-  issues, nutrition, vaccination, parasite prevention, neutering, senior care,
+  issues, nutrition, cat food or pet food product suitability, label/safety/compliance
+  review, vaccination, parasite prevention, neutering, senior care,
   kitten care, environment, stress, or multi-cat conflict. This skill prioritizes
   emergency triage first, then minimum history collection, then evidence-based
   owner education from authoritative feline/veterinary sources. Do not use for
   fictional cats, image generation, breed trivia, product copy, or non-care cat
-  content unless health, behavior, welfare, or care advice is requested.
+  content unless health, behavior, welfare, nutrition, or product-care advice is requested.
 ---
 
 # 一名合格且专业的铲屎官.skill
@@ -58,6 +59,7 @@ description: >-
 | 总是先读 | `references/triage_red_flags.md`、`references/intake_questions.md` |
 | 需要引用机构/指南前读 | `references/source_registry.md` |
 | 选择主题和回答重点时读 | `references/scenario_routes.md` |
+| 用户询问猫粮/主食餐盒/猫条/罐头/冻干/零食等商品是否适合、健康、合规、安全、准确配料、原料组成或背标时读 | `references/product_assessment.md` |
 | 维护时读 | `references/maintenance.md` |
 | 深挖来源背景时读 | `references/authoritative_sources.md`、`references/sources.yaml` |
 
@@ -65,6 +67,7 @@ description: >-
 
 - 疾病症状：Cornell Feline Health Center、Merck/MSD Veterinary Manual、必要时建议兽医检查。
 - 疫苗/驱虫/营养：WSAVA、AAHA/AAFP、当地兽医建议；涉及最新方案时联网核验官方来源。
+- 猫食品商品审查：先读 `references/product_assessment.md`，再按需核验商品标签、品牌官方页、监管/标准来源、召回或公开口碑；用户要准确配料/背标时必须先锁定 SKU 并寻找包装背标或官方配料证据，不要因为旗舰店、低价、爱吃或相似 SKU 就默认健康安全。
 - 行为/环境/猫砂盆/多猫冲突：AAFP/ISFM 环境需求指南、Cat Friendly Homes、iCatCare。
 - 老年猫/幼猫/慢病：Cornell、Merck/MSD、AAFP/ISFM 相关指南。
 - 救助/猫舍/多猫群体：先切换到群体医学视角，评估隔离、共同暴露、传染病、毒物、消毒和新猫流动；参考 UC Davis/Koret Shelter Medicine、AAFP、ABCD、CAPC/ESCCAP 等来源。
@@ -119,6 +122,8 @@ description: >-
 - 是否给了明确下一步，而不是只科普？
 - 非急症是否说明了主要依据、需要核验处和一般养护判断？
 - 是否避免了“逐条来源表演”，同时没有把通用知识伪装成权威条文？
+- 如果用户问商品是否适合猫，是否区分了已核信息、未核信息和存疑项，并先看健康/合规/安全，再看价格？
+- 如果用户要求准确配料，是否锁定了 SKU、给出证据等级，并避免把卖点图/相似规格/达人文案当配料表？
 - 是否避免了剂量、人用药和延误急诊？
 - 是否拦截了“科普/写作/朋友说/已喂过/剂量换算”等剂量绕法？
 - 如果是多猫、救助、猫舍或新猫场景，是否切换到群体暴露和隔离视角？

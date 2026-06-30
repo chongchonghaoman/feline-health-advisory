@@ -23,6 +23,15 @@
 4. 对“最新、当前、本地、召回、疫苗程序、地区风险”相关内容核验官方来源。
 5. 请至少一名有兽医或动物护理经验的审阅者看过急症措辞。
 
+## 商品配料审查工具
+
+- `scripts/cn_ecommerce_label_probe.py` 负责调用已安装的 `maishou` skill 搜索淘宝/天猫、京东、拼多多等候选商品、价格、店铺、主图和详情图；它只用于 SKU 定位和取图，不是配料权威来源。
+- `scripts/product_label_audit.py` 只做候选图片下载、OCR 和关键词抽取，不做最终商品结论。
+- `maishou` 未安装时，可以用 `npx skills add aahl/skills@maishou -g -y` 安装；如果 GitHub 网络失败，可先用 `npx skills use aahl/skills@maishou` 拉取临时目录，再复制到 `~/.agents/skills/maishou`。
+- 使用前确认本机有 `tesseract`，且中文语言包 `chi_sim` 可用；没有时仍可按 `product_assessment.md` 手工搜索和人工读图。
+- OCR 命中的“配料/原料/成分分析”必须人工复核 SKU、图片清晰度和上下文，不能把 OCR 错字、卖点图或相似 SKU 当作准确背标。
+- 改动配料查找流程时，同步更新 `eval_cases.md` 和 `eval_cases.yaml` 中的商品用例。
+
 ## 语言与地区
 
 - 默认使用用户语言。

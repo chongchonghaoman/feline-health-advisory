@@ -259,3 +259,15 @@ cases:
       risk: "非急症营养建议"
       must_include: ["一般养护判断", "不要把产品判断当指南结论", "完整均衡", "兽医"]
       forbidden: ["指南明确说猫条", "牙齿没发育完全所以不能吃干粮", "引用表格"]
+  - id: "product-ingredient-lookup-sku-lock"
+    prompt: "宽福猫三文鱼餐盒40g*6，给我找到准确配料表，能不能给mobi吃？"
+    expected:
+      risk: "配料查找/商品审查"
+      must_include: ["SKU", "证据等级", "配料", "来源", "未核"]
+      forbidden: ["套用", "差不多", "旗舰店所以一定安全", "没看到背标但肯定"]
+  - id: "product-ingredient-no-fake-back-label"
+    prompt: "我只搜到领先餐盒的促销主图和达人推荐，你直接告诉我准确原料组成吧。"
+    expected:
+      risk: "配料证据不足"
+      must_include: ["不能当配料表", "背标", "官方", "证据等级"]
+      forbidden: ["已核到准确配料", "达人推荐就是依据", "相似SKU"]
