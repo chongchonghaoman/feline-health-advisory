@@ -205,6 +205,14 @@ def label_found(candidates: list[dict[str, Any]]) -> bool:
     return False
 
 
+def acquisition_status(payload: dict[str, Any]) -> str:
+    if payload.get("ingredient_candidate_found"):
+        return "ingredient_candidate_found_needs_sku_and_human_transcription"
+    if payload.get("search_count", 0):
+        return "sku_candidates_found_continue_ingredient_acquisition"
+    return "no_sku_candidate_found_continue_text_web_search"
+
+
 def label_status(item: dict[str, Any]) -> str:
     if not item.get("detail"):
         return "detail_not_fetched"
@@ -302,18 +310,19 @@ def web_queries(keyword: str, candidates: list[dict[str, Any]], search_keyword: 
 
 
 def next_actions(payload: dict[str, Any]) -> list[str]:
-    if payload.get("label_found"):
+    if payload.get("ingredient_candidate_found") or payload.get("label_found"):
         return [
             "人工核对 OCR 命中的图片是否为同一 SKU、同一规格、同一口味、同一生命阶段。",
             "把配料/添加剂/保证分析/适用阶段/标准号逐项摘录，不能只摘卖点文案。",
         ]
     top = payload.get("candidates", [])[:3]
     actions = [
+        "不要把本次结果写成最终的“未验证”。先逐条执行 web_queries 中的搜索式，继续找官方配料字段、背标图或保证分析。",
         "打开候选商品购买链接或原平台详情页，在已登录浏览器里查看规格选择和详情长图。",
         "优先保存这些图：规格选择截图、商品详情长截图、包装背面/中文标签/保证分析图。",
         "把保存的本地图片交给 product_label_audit.py：python scripts/product_label_audit.py --query \"商品名\" --image \"图片路径\"",
         "如果平台详情仍没有背标，问旗舰店客服要：配料表、添加剂组成、产品成分分析保证值、适用生命阶段、中文标签照片。",
-        "客服不给或只给卖点图时，把该商品标为 D 级证据，不给 mobi 做主食推荐。",
+        "客服不给或只给卖点图时，把该商品标为 D 级证据；同时记录被阻断路径和下一步最小补证动作，不把“未验证”当作配料获取成果。",
     ]
     for item in top:
         detail = item.get("detail") or {}
@@ -369,10 +378,13 @@ def build_probe(args: argparse.Namespace) -> dict[str, Any]:
         "search_count": len(rows),
         "candidates": candidates,
     }
-    payload["label_found"] = label_found(candidates)
-    payload["label_candidate_found"] = payload["label_found"]
+    label_hit = label_found(candidates)
+    payload["label_found"] = label_hit
+    payload["label_candidate_found"] = label_hit
+    payload["ingredient_candidate_found"] = label_hit
     payload["sku_verified_label"] = False
     payload["web_queries"] = web_queries(args.keyword, candidates, search_keyword)[: args.query_limit]
+    payload["acquisition_status"] = acquisition_status(payload)
     payload["next_actions"] = next_actions(payload)
     return payload
 
@@ -384,8 +396,10 @@ def print_text(payload: dict[str, Any]) -> None:
     print(f"source: {payload['source_name']}")
     print(f"maishou_dir: {payload['maishou_dir']}")
     print(f"search_count: {payload['search_count']}")
+    print(f"ingredient_candidate_found: {payload.get('ingredient_candidate_found')}")
     print(f"label_candidate_found: {payload.get('label_candidate_found')}")
     print(f"sku_verified_label: {payload.get('sku_verified_label')}")
+    print(f"acquisition_status: {payload.get('acquisition_status')}")
     print("")
     for item in payload["candidates"]:
         print(f"[{item['idx']}] {item['title']}")

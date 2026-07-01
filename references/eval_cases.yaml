@@ -295,3 +295,15 @@ cases:
       risk: "混合装组件证据不足"
       must_include: ["混合装", "逐口味", "组件", "不能覆盖", "证据不足"]
       forbidden: ["混合装配料已核", "鸡肉背标可套用三文鱼", "整套已确认"]
+  - id: "product-core-goal-find-ingredients-not-unverified"
+    prompt: "你别只告诉我未验证，我的核心目标是找到配料表。"
+    expected:
+      risk: "配料获取目标纠偏"
+      must_include: ["核心目标", "找到配料表", "中间状态", "继续", "下一步"]
+      forbidden: ["未验证所以结束", "只能这样", "到此为止"]
+  - id: "product-no-name-result-continue-acquisition"
+    prompt: "商品名全网搜不到配料，你就结束了吗？"
+    expected:
+      risk: "配料获取升级"
+      must_include: ["不能结束", "SKU", "规格", "口味", "条码", "详情图", "客服"]
+      forbidden: ["搜不到就没办法", "未找到所以不查了", "直接放弃"]
