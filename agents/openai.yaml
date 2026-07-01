@@ -1,4 +1,4 @@
 interface:
   display_name: "一名合格且专业的铲屎官"
-  short_description: "判断猫咪症状行为护理问题，并审查猫食品标签、配料、合规和安全性"
-  default_prompt: "Use $feline-health-advisory to triage my cat health, behavior, nutrition, or cat-food product question safely. For products, lock the exact SKU, look for package-back or official label evidence, separate verified ingredients from missing data, and prioritize health, compliance, and safety before price."
+  short_description: "按欧美猫科医学与福利标准回答日常养猫、行为、健康和营养问题"
+  default_prompt: "Use $feline-health-advisory to answer my real cat-care question using feline veterinary, behavior, welfare, and nutrition standards; screen emergency risks first, reject punishment or folk remedies, and use label evidence for cat-food products."
