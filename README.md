@@ -254,6 +254,7 @@ feline-health-advisory/
     ├── intake_questions.md
     ├── scenario_routes.md
     ├── product_assessment.md
+    ├── ingredient_acquisition.md
     ├── source_registry.md
     ├── sources.yaml
     ├── eval_cases.md
@@ -268,7 +269,8 @@ feline-health-advisory/
 - `triage_red_flags.md`：急症红旗，包括尿闭、中毒、呼吸、产科、幼猫、老年猫急变。
 - `intake_questions.md`：最小病史采集模板。
 - `scenario_routes.md`：疾病、行为、猫砂盆、疫苗、营养、幼猫、老年猫、中毒等主题路由。
-- `product_assessment.md`：猫食品商品审查流程，覆盖 SKU 锁定、背标证据等级、硬获取模式、中文电商探针、OCR 辅助和幼猫适配。
+- `product_assessment.md`：猫食品商品审查流程，覆盖 SKU 锁定、食品类别/生命阶段、标签合规、营养适配、安全风评和价格判断。
+- `ingredient_acquisition.md`：准确配料表获取 SOP，覆盖背标证据等级、国内/海外同款检索、中文电商探针、OCR 人工复核和鲜朗式实战流程。
 - `cn_ecommerce_label_probe.py`：调用已安装的 `maishou` skill 搜索淘宝/天猫、京东、拼多多等候选商品和详情图，可用 `--require-label` 强制在未找到强标签字段时失败。
 - `product_label_audit.py`：下载候选图片，做预处理，并用 Tesseract OCR 抽取配料/保证分析等标签线索。
 - `sources.yaml`：结构化来源登记。

@@ -59,7 +59,8 @@ description: >-
 | 总是先读 | `references/triage_red_flags.md`、`references/intake_questions.md` |
 | 需要引用机构/指南前读 | `references/source_registry.md` |
 | 选择主题和回答重点时读 | `references/scenario_routes.md` |
-| 用户询问猫粮/主食餐盒/猫条/罐头/冻干/零食等商品是否适合、健康、合规、安全、准确配料、原料组成或背标时读 | `references/product_assessment.md` |
+| 用户询问猫粮/主食餐盒/猫条/罐头/冻干/零食等商品是否适合、健康、合规、安全时读 | `references/product_assessment.md` |
+| 用户要求准确配料、原料组成、成分分析保证值、背标或包装背面时读 | `references/ingredient_acquisition.md` |
 | 维护时读 | `references/maintenance.md` |
 | 深挖来源背景时读 | `references/authoritative_sources.md`、`references/sources.yaml` |
 
@@ -67,7 +68,7 @@ description: >-
 
 - 疾病症状：Cornell Feline Health Center、Merck/MSD Veterinary Manual、必要时建议兽医检查。
 - 疫苗/驱虫/营养：WSAVA、AAHA/AAFP、当地兽医建议；涉及最新方案时联网核验官方来源。
-- 猫食品商品审查：先读 `references/product_assessment.md`，再按需核验商品标签、品牌官方页、监管/标准来源、召回或公开口碑；用户要准确配料/背标时，核心任务是尽最大努力拿到目标 SKU 的配料表原图、官方字段或可复核文字。必须先锁定 SKU 并持续寻找包装背标或官方配料证据；“未核到/未验证”只能作为被阻断说明和下一步获取动作，不能替代查找本身。不要因为旗舰店、低价、爱吃或相似 SKU 就默认健康安全。
+- 猫食品商品审查：先读 `references/product_assessment.md`，再按需核验商品标签、品牌官方页、监管/标准来源、召回或公开口碑；不要因为旗舰店、低价、爱吃或相似 SKU 就默认健康安全。用户要准确配料/背标时，切到 `references/ingredient_acquisition.md`，核心任务是尽最大努力拿到目标 SKU 的配料表原图、官方字段或可复核文字；“未核到/未验证”只能作为被阻断说明和下一步获取动作，不能替代查找本身。
 - 行为/环境/猫砂盆/多猫冲突：AAFP/ISFM 环境需求指南、Cat Friendly Homes、iCatCare。
 - 老年猫/幼猫/慢病：Cornell、Merck/MSD、AAFP/ISFM 相关指南。
 - 救助/猫舍/多猫群体：先切换到群体医学视角，评估隔离、共同暴露、传染病、毒物、消毒和新猫流动；参考 UC Davis/Koret Shelter Medicine、AAFP、ABCD、CAPC/ESCCAP 等来源。
