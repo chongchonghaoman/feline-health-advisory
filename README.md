@@ -34,6 +34,24 @@
 
 也就是说，少一点“祖传感觉”，多一点“猫科基本法”。
 
+## 它为什么值得信任
+
+这个 skill 的主要参考底座，来自美国、英国、欧洲和国际猫科医学/动物福利体系里的权威资料：兽医协会指南、同行评审期刊共识、大学兽医学院科普、宠物食品营养规范、监管召回页面和毒物热线资料。
+
+不是因为“国外”两个字自动发光，而是这些地方更常见地把猫当成一个独立物种认真研究：行为有行为指南，环境有环境五支柱，营养有营养评估工具，老年猫有老年猫指南，多猫冲突有多猫冲突指南，连“猫不想被你硬摸”这种事都能写成正式的猫友好互动原则。
+
+这个 skill 会优先使用这些来源：
+
+| 层级 | 代表来源 | 用来解决什么 |
+|---|---|---|
+| 猫科/兽医指南 | AAFP/FelineVMA、AAHA、ISFM/iCatCare、WSAVA | 疫苗、生命阶段、老年猫、疼痛、行为、环境、多猫、猫友好互动 |
+| 大学与专业机构 | Cornell Feline Health Center、Tufts Petfoodology、Ohio State Indoor Pet Initiative、UC Davis/Koret Shelter Medicine | 疾病科普、营养识读、室内猫丰容、救助/多猫场景 |
+| 欧洲营养与寄生虫体系 | FEDIAF、ABCD、ESCCAP | 完整/补充宠物食品、猫传染病、寄生虫与人畜共患 |
+| 安全与监管线索 | FDA pet food recalls、ASPCA Animal Poison Control、Pet Poison Helpline | 食品召回、毒物暴露、危险品和紧急处理方向 |
+| 面向铲屎官的可执行资料 | Cat Friendly Homes、iCatCare owner guides | 把专业原则翻译成普通家庭能做的步骤 |
+
+所以它不是“搜到啥说啥”。它会尽量先找专业共识，再看你家猫的具体情况。网络经验可以作为线索，但不能直接升职成真理。猫命面前，热评区先坐下。
+
 ## 可以问什么
 
 几乎所有真实养猫问题都可以问。它不是只做急症分诊，也不是只查猫粮配料。
@@ -127,21 +145,26 @@
 
 ## 主要参考底座
 
-这个 skill 优先参考美国、欧洲和国际猫科医学、行为、福利和营养资料，包括：
+这个 skill 优先参考美国、欧洲和国际猫科医学、行为、福利、营养与食品安全资料。完整登记在 [`references/source_registry.md`](references/source_registry.md) 和 [`references/sources.yaml`](references/sources.yaml)，README 里只放主干，免得读起来像把论文数据库倒在你脸上。
 
 | 来源 | 主要用途 |
 |---|---|
-| AAFP / FelineVMA | 猫科指南、猫友好诊疗、疫苗、老年猫、多猫紧张 |
-| ISFM / iCatCare | 猫行为、福利、环境、日常养护、铲屎官教育 |
-| AAFP/ISFM Environmental Needs Guidelines | 猫环境需求五支柱、压力、乱尿、抓挠、多猫冲突 |
+| AAFP / FelineVMA | 猫科指南、猫友好诊疗、疫苗、老年猫、多猫紧张、乱尿和猫主人教育 |
+| AAHA | 生命阶段照护、营养与体重管理、疫苗等北美小动物医院体系指南 |
+| ISFM / iCatCare | 猫行为、福利、环境、日常养护、猫友好互动、铲屎官教育 |
+| AAFP/ISFM Environmental Needs / House-Soiling / Intercat / Cat Friendly Interaction | 环境五支柱、乱尿、抓挠、多猫冲突、低压力互动 |
 | Cat Friendly Homes | 面向普通铲屎官的猫友好家庭养护 |
-| WSAVA | 疫苗、营养评估、疼痛、福利等全球指南 |
-| Cornell Feline Health Center | 猫疾病、营养和健康科普 |
+| WSAVA | 疫苗、营养评估、疼痛、福利、遗传病等全球指南 |
+| Cornell Feline Health Center | 猫疾病、营养、健康风险和主人教育 |
+| Tufts Petfoodology | 兽医营养、宠物食品标签、营销话术和配料迷思 |
+| FEDIAF | 欧洲完整/补充宠物食品营养指南和营养充足性框架 |
+| The Ohio State University Indoor Pet Initiative | 室内猫环境丰容、猫砂盆、抓挠、玩耍和休息区 |
 | Merck/MSD Veterinary Manual | 兽医专业背景和疾病机制 |
 | UC Davis/Koret Shelter Medicine | 救助、多猫、猫瘟、上呼吸道感染、隔离 |
-| ABCD / CAPC / ESCCAP | 猫癣、寄生虫、传染病和人畜共患背景 |
+| ABCD / CAPC / ESCCAP | 猫传染病、寄生虫、猫癣和人畜共患背景 |
+| FDA / ASPCA Poison Control / Pet Poison Helpline | 食品召回、毒物暴露和紧急风险判断 |
 
-完整来源登记见 [`references/source_registry.md`](references/source_registry.md) 和 [`references/sources.yaml`](references/sources.yaml)。
+来源使用时还有一个很重要的规矩：兽医专业资料只拿来做风险框架和就医判断，不把药物剂量、处方流程、操作步骤搬给猫主在家硬莽。该去医院的时候，skill 会负责把“别搜了快去”说清楚。
 
 ## 不会安装也能直接用
 

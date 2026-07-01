@@ -11,12 +11,17 @@
 | WSAVA Global Guidelines | https://wsava.org/global-guidelines/ | 持续更新入口 | 疫苗、营养、疼痛、福利等全球指南入口 | 命名具体年份前核验官方页面 |
 | WSAVA Vaccination Guidelines | https://wsava.org/global-guidelines/vaccination-guidelines/ | 2024 | 猫犬疫苗原则、风险分层 | 具体接种程序需结合年龄、地区、生活方式和兽医建议 |
 | AAHA/AAFP Feline Vaccination Guidelines | https://catvets.com/resource/aaha-aafp-feline-vaccination-guidelines/ | 2020 | 猫疫苗风险分层与核心/非核心原则 | 不要和 WSAVA 2024 混称为同一指南 |
+| AAHA/AAFP Feline Life Stage Guidelines | https://catvets.com/resource/aaha-aafp-feline-life-stage-guidelines/ | 2021 | 幼猫、成年猫、老年猫的生命阶段照护、预防医学和筛查 | 具体筛查和处置需结合兽医检查 |
 | WSAVA Nutritional Assessment Guidelines / Toolkit | https://wsava.org/global-guidelines/global-nutrition-guidelines/ | 2011 指南；2021 toolkit/网页资源 | 营养筛查、体况/肌肉评估、饮食史 | 不给慢病处方粮、热量或减肥方案替代诊断 |
+| AAHA Nutrition and Weight Management Guidelines | https://www.aaha.org/wp-content/uploads/globalassets/02-guidelines/2021-nutrition-and-weight-management/resourcepdfs/new-2021-aaha-nutrition-and-weight-management-guidelines-with-ref.pdf | 2021 | 营养评估、体况、肌肉状态、体重管理 | 不输出治疗性热量计算或替代兽医营养处方 |
+| FEDIAF Nutritional Guidelines | https://europeanpetfood.org/self-regulation/nutritional-guidelines/ | 2025 可下载，需核验当前版本 | 欧洲完整/补充宠物食品营养指南、营养充足性、生产参考 | 用于完整主食/补充食品原则；不输出家庭配方营养表 |
 | WSAVA Pain Management Guidelines | https://wsava.org/global-guidelines/pain-guidelines/ | 2022 | 疼痛识别、疼痛管理原则、动物福利 | 不输出止痛药名、剂量或处置流程 |
 | WSAVA Hereditary Disease Guidelines | https://wsava.org/global-guidelines/hereditary-disease/ | 2023 | 遗传病风险、遗传检测原则、品种相关筛查 | 品种风险和检测选择需兽医或专科确认 |
 | AAFP / FelineVMA | https://catvets.com/ | 持续更新 | 猫科指南、猫友好诊疗、猫主人教育 | 行为、环境、疫苗、老年猫等主题优先参考 |
 | AAFP/ISFM Environmental Needs Guidelines | https://catvets.com/resource/aafp-isfm-environmental-needs-guidelines/ | 2013; JFMS 15(3):219-230 | 安全空间、资源分布、玩耍、人猫互动、嗅觉安全 | 行为、压力、多猫、乱尿、抓挠问题优先使用 |
+| AAFP/ISFM House-Soiling Guidelines | https://catvets.com/resource/aafp-isfm-house-soiling-guidelines/ | 2014; JFMS 16(7):579-598 | 猫乱尿、尿标记、猫砂盆问题的诊断与处理框架 | 先排尿闭/疼痛/尿血等医学红旗，再谈行为和环境 |
 | 2024 AAFP Intercat Tension Guidelines | https://catvets.com/resource/2024-intercat-tension-guidelines/ | 2024 | 多猫紧张、冲突、资源和重新引入 | 不建议惩罚；先排除疼痛和疾病 |
+| AAFP/ISFM Cat Friendly Veterinary Interaction Guidelines | https://catvets.com/resource/aafp-isfm-cat-friendly-veterinary-interaction-guidelines/ | 2022 | 低压力互动、猫友好处理、就诊准备和恐惧降低 | 不把强制按压或粗暴保定写成家庭建议 |
 | 2021 AAFP Feline Senior Care Guidelines | https://catvets.com/resource/senior-care-guidelines/ | 2021 | 老年猫筛查、衰弱、生活质量、照护 | 老猫新发变化先按医学问题筛查 |
 | ISFM/AAFP Acute Pain Guidelines | https://icatcare.org/cat-advice/cat-carer-guides/ | 2022 | 急性疼痛识别、猫主人疼痛信号 | 不输出止痛药剂量；疼痛评估需兽医进行 |
 | ISFM/AAFP NSAID Consensus Guidelines | https://catvets.com/clinical-resources/practice-guidelines/ | 2024 | 长期 NSAID 使用评估和监测 | 不输出 NSAID 药名、剂量或监测方案 |
@@ -24,8 +29,11 @@
 | International Cat Care / ISFM | https://icatcare.org/ | 持续更新 | 猫行为、福利、疾病科普、ISFM 资源 | 疼痛/NSAID 等专业主题不得输出剂量 |
 | iCatCare Feeding your cat or kitten | https://icatcare.org/articles/feeding-your-cat-or-kitten | 持续更新 | 幼猫/成年猫喂食、湿粮/干粮、喂食 routine 的铲屎官科普 | 具体产品、品牌、配方和拒食原因不能当作指南结论 |
 | iCatCare Hand-rearing kittens | https://icatcare.org/articles/hand-rearing-kittens | 持续更新 | 新生/幼龄幼猫照护、断奶和人工喂养背景 | 不输出奶量、强喂或医疗处置步骤 |
+| The Ohio State University Indoor Pet Initiative | https://indoorpet.osu.edu/cats | 持续更新 | 室内猫环境丰容、猫砂盆、抓挠、玩耍和休息区 | 用于室内猫生活质量建议；不替代医疗诊断 |
 | Cornell Feline Health Topics | https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics | 持续更新 | 常见猫病概览 | 用于解释可能方向，不作诊断 |
 | Cornell Feeding Your Cat | https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/feeding-your-cat | 持续更新 | 生命阶段、完整均衡、猫粮选择和喂食原则 | 不做品牌背书；产品成分需看包装或兽医建议 |
+| Tufts Petfoodology | https://sites.tufts.edu/petfoodology/ | 持续更新 | 兽医营养、猫狗食品标签、营销话术和配料迷思 | 用于营养识读；不做品牌背书 |
+| U.S. FDA Pet Food Recalls and Withdrawals | https://www.fda.gov/animal-veterinary/safety-health/recalls-withdrawals | 持续更新 | 宠物食品召回、撤回和安全警报 | 当前召回必须联网核验，不凭旧记忆判断 |
 | PRC Ministry of Agriculture and Rural Affairs Announcement No. 20 - Pet Feed Management Rules | https://faolex.fao.org/docs/pdf/chn176387.pdf | 2018，需按官方监管页面核验现行状态 | 中国市场宠物饲料管理、标签、进口和合规背景 | 用于产品合规框架；无法核验当前官方页面或包装标签时，不下法律合规结论 |
 | PRC Pet Feed Labeling Rules | https://faolex.fao.org/docs/pdf/chn176389.pdf | 2018，需按官方监管页面核验现行状态 | 宠物饲料标签、原料组成、成分分析保证值、适用阶段等 | 检查商品标签完整性；没有包装背面/详情页证据时标为未核 |
 | National Public Service Platform for Standards Information | https://openstd.samr.gov.cn/bzgk/gb/index | 持续更新官方平台 | GB/T 等国家标准查询，含宠物食品相关标准 | 只有看到标签标准号并能核验时，才说符合某标准 |
@@ -39,7 +47,9 @@
 | UC Davis/Koret Shelter Medicine - URI | https://www.sheltermedicine.com/library/resources/feline-upper-respiratory-infection-aka-uri | 持续更新 | 收容所上呼吸道感染、多猫应激、隔离 | 区分轻症和呼吸困难；不推荐一刀切抗生素 |
 | AAFP Feline Retrovirus Guidelines | https://catvets.com/resource/feline-retrovirus-management-guidelines/ | 2020 | FeLV/FIV 检测、传播和多猫管理 | 不简单说“必须安乐”或“随便混养” |
 | ABCD Dermatophytosis Guideline | https://www.abcdcatsvets.org/guideline-for-dermatophytosis-ringworm-in-cats/ | 按页面核验 | 猫癣、环境污染、人畜共患 | 建议确诊和隔离清洁方案；不输出药物方案 |
+| ABCD Europe Feline Disease Guidelines | https://www.abcdcatsvets.org/category/guidelines/ | 持续更新 | 欧洲猫传染病、疫苗和人畜共患背景 | 用于疾病预防原则；不复述治疗方案或药物剂量 |
 | CAPC General Guidelines | https://capcvet.org/guidelines/general-guidelines/ | 持续更新 | 寄生虫检测、预防、人畜共患 | 不输出驱虫剂量；地区风险需核验 |
+| ESCCAP Guidelines | https://www.esccap.org/guidelines/ | 持续更新 | 欧洲伴侣动物寄生虫、人畜共患和预防原则 | 不输出驱虫剂量；地区性风险和用药需兽医核验 |
 
 ## 需要联网核验的主题
 

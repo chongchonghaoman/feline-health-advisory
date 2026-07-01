@@ -1,4 +1,4 @@
-last_checked: "2026-06-30"
+last_checked: "2026-07-01"
 checked_by: "codex"
 policy:
   single_source_of_truth: "This file is the structured source registry. source_registry.md is a human-readable summary; authoritative_sources.md is background only."
@@ -44,6 +44,16 @@ sources:
     requires_web: true
     fallback_action: "Do not state current local schedules without verification."
     update_trigger: "when citing AAHA/AAFP specifically"
+  - id: "aaha-aafp-feline-life-stage-2021"
+    name: "AAHA/AAFP Feline Life Stage Guidelines"
+    url: "https://catvets.com/resource/aaha-aafp-feline-life-stage-guidelines/"
+    version: "2021"
+    topics: ["life stage", "kitten", "adult cats", "senior cats", "preventive care", "screening"]
+    audience: "veterinary-and-owner"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Use life-stage and preventive-care principles; individualized screening and treatment require a veterinarian."
+    update_trigger: "when kitten/adult/senior life-stage recommendations or screening frequency are discussed"
   - id: "wsava-nutrition-2011-2021"
     name: "WSAVA Nutritional Assessment Guidelines and Global Nutrition Toolkit"
     url: "https://wsava.org/global-guidelines/global-nutrition-guidelines/"
@@ -54,6 +64,26 @@ sources:
     requires_web: true
     fallback_action: "Use nutrition-screening principles; do not prescribe therapeutic diets or calorie targets."
     update_trigger: "when nutrition version, toolkit, or disease diet advice is involved"
+  - id: "aaha-nutrition-weight-2021"
+    name: "AAHA Nutrition and Weight Management Guidelines for Dogs and Cats"
+    url: "https://www.aaha.org/wp-content/uploads/globalassets/02-guidelines/2021-nutrition-and-weight-management/resourcepdfs/new-2021-aaha-nutrition-and-weight-management-guidelines-with-ref.pdf"
+    version: "2021"
+    topics: ["nutrition", "weight management", "body condition", "muscle condition", "diet history"]
+    audience: "veterinary"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Use assessment principles; do not calculate therapeutic calories, prescribe weight-loss plans, or replace veterinary nutrition care."
+    update_trigger: "when weight management, body condition, or nutrition assessment is discussed"
+  - id: "fediaf-nutritional-guidelines"
+    name: "FEDIAF Nutritional Guidelines for Complete and Complementary Pet Food for Cats and Dogs"
+    url: "https://europeanpetfood.org/self-regulation/nutritional-guidelines/"
+    version: "2025 available; verify current download"
+    topics: ["pet food nutrition", "complete food", "complementary food", "nutrient guidelines", "Europe"]
+    audience: "manufacturer-and-veterinary"
+    dose_leak_risk: "medium"
+    requires_web: true
+    fallback_action: "Use complete/complementary and life-stage adequacy principles; do not formulate diets or output nutrient target tables for home use."
+    update_trigger: "when European pet food nutrition standards or complete/complementary food claims are discussed"
   - id: "wsava-pain-2022"
     name: "WSAVA Pain Management Guidelines"
     url: "https://wsava.org/global-guidelines/pain-guidelines/"
@@ -84,6 +114,16 @@ sources:
     requires_web: false
     fallback_action: "Use the five-pillar environmental framework."
     update_trigger: "when behavior or environmental guidance is revised"
+  - id: "aafp-isfm-house-soiling-2014"
+    name: "AAFP/ISFM Guidelines for Diagnosing and Solving House-Soiling Behavior in Cats"
+    url: "https://catvets.com/resource/aafp-isfm-house-soiling-guidelines/"
+    version: "2014; JFMS 16(7):579-598"
+    topics: ["house-soiling", "litter box", "urine marking", "behavior", "environment"]
+    audience: "veterinary-and-owner"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use litter-box optimization and five-pillar principles; medical urinary red flags override behavior advice."
+    update_trigger: "when house-soiling, urine marking, or litter-box problems are discussed"
   - id: "aafp-intercat-tension-2024"
     name: "2024 AAFP Intercat Tension Guidelines"
     url: "https://catvets.com/resource/2024-intercat-tension-guidelines/"
@@ -94,6 +134,26 @@ sources:
     requires_web: true
     fallback_action: "Use non-punitive separation, resource distribution, and gradual reintroduction principles."
     update_trigger: "when multi-cat conflict guidance is requested"
+  - id: "aafp-isfm-cat-friendly-interaction-2022"
+    name: "AAFP/ISFM Cat Friendly Veterinary Interaction Guidelines"
+    url: "https://catvets.com/resource/aafp-isfm-cat-friendly-veterinary-interaction-guidelines/"
+    version: "2022"
+    topics: ["cat friendly handling", "low stress handling", "fear", "veterinary visits", "human-cat interaction"]
+    audience: "veterinary-and-owner"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use gentle, choice-based handling and stress reduction principles; do not teach forceful restraint."
+    update_trigger: "when handling, restraint, vet-visit preparation, or fear-based behavior is discussed"
+  - id: "ohio-state-indoor-pet-initiative-cats"
+    name: "The Ohio State University Indoor Pet Initiative - Cats"
+    url: "https://indoorpet.osu.edu/cats"
+    version: "continuously updated"
+    topics: ["indoor cats", "environmental enrichment", "litter boxes", "scratching", "resting areas", "play"]
+    audience: "owner-and-veterinary"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use indoor enrichment and basic-needs principles; do not treat as a medical diagnostic source."
+    update_trigger: "when indoor-cat environment, enrichment, scratching, or litter-box setup is discussed"
   - id: "cat-friendly-homes"
     name: "Cat Friendly Homes"
     url: "https://catfriendly.com/"
@@ -184,6 +244,26 @@ sources:
     requires_web: true
     fallback_action: "Use broad life-stage and complete-balanced principles; avoid brand comparisons."
     update_trigger: "when general food choice or life-stage nutrition is discussed"
+  - id: "tufts-petfoodology"
+    name: "Tufts Cummings School of Veterinary Medicine - Petfoodology"
+    url: "https://sites.tufts.edu/petfoodology/"
+    version: "continuously updated"
+    topics: ["pet food", "nutrition", "label reading", "marketing claims", "ingredient myths"]
+    audience: "owner-and-veterinary"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Use for evidence-based nutrition and label literacy; do not use it as brand endorsement."
+    update_trigger: "when pet-food marketing claims, ingredient myths, or label-reading questions are discussed"
+  - id: "fda-pet-food-recalls"
+    name: "U.S. FDA Animal & Veterinary - Pet Food Recalls and Withdrawals"
+    url: "https://www.fda.gov/animal-veterinary/safety-health/recalls-withdrawals"
+    version: "continuously updated"
+    topics: ["pet food safety", "recalls", "withdrawals", "contamination", "FDA"]
+    audience: "regulator-and-public"
+    dose_leak_risk: "low"
+    requires_web: true
+    fallback_action: "Do not claim a current recall status without checking FDA or brand pages; keep package, lot, and purchase evidence."
+    update_trigger: "when food safety, contamination, recalls, or current product risk is discussed"
   - id: "china-pet-feed-announcement-20"
     name: "PRC Ministry of Agriculture and Rural Affairs Announcement No. 20 - Pet Feed Management Rules"
     url: "https://faolex.fao.org/docs/pdf/chn176387.pdf"
@@ -314,6 +394,16 @@ sources:
     requires_web: true
     fallback_action: "State zoonotic/environmental contamination risk; advise veterinary diagnosis and isolation plan without drug protocols."
     update_trigger: "when ringworm/dermatophytosis is discussed"
+  - id: "abcd-feline-disease-guidelines"
+    name: "ABCD Europe Feline Disease Guidelines"
+    url: "https://www.abcdcatsvets.org/category/guidelines/"
+    version: "continuously updated"
+    topics: ["feline infectious disease", "vaccination", "disease prevention", "Europe", "zoonosis"]
+    audience: "veterinary"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Use disease-prevention principles and refer to veterinary diagnosis; do not reproduce treatment protocols or drug doses."
+    update_trigger: "when feline infectious disease guidelines or current ABCD updates are discussed"
   - id: "capc-general-guidelines"
     name: "Companion Animal Parasite Council General Guidelines"
     url: "https://capcvet.org/guidelines/general-guidelines/"
@@ -324,3 +414,13 @@ sources:
     requires_web: true
     fallback_action: "Recommend veterinary-guided testing/prevention; do not output parasite treatment doses."
     update_trigger: "when parasite recommendations or regional parasite risks are discussed"
+  - id: "esccap-guidelines"
+    name: "European Scientific Counsel Companion Animal Parasites Guidelines"
+    url: "https://www.esccap.org/guidelines/"
+    version: "continuously updated"
+    topics: ["parasites", "deworming", "ectoparasites", "zoonosis", "Europe"]
+    audience: "veterinary-and-owner"
+    dose_leak_risk: "high"
+    requires_web: true
+    fallback_action: "Use parasite-risk and prevention principles; do not output parasiticide doses or local treatment schedules."
+    update_trigger: "when European parasite guidance, deworming, flea/tick control, or zoonotic parasite risk is discussed"
