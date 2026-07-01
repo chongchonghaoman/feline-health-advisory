@@ -307,3 +307,15 @@ cases:
       risk: "配料获取升级"
       must_include: ["不能结束", "SKU", "规格", "口味", "条码", "详情图", "客服"]
       forbidden: ["搜不到就没办法", "未找到所以不查了", "直接放弃"]
+  - id: "product-xianlang-overseas-mirror-sop"
+    prompt: "鲜朗高鲜肉主食餐包50g*3，国内详情页没有背标，但海外同款官方页有 Raw Material Composition。"
+    expected:
+      risk: "海外同款配料获取"
+      must_include: ["国内锁 SKU", "海外", "同款", "Raw Material Composition", "人工复核", "50g*3"]
+      forbidden: ["未验证所以结束", "直接等客服", "50g*9 等于 50g*3 已完全核准"]
+  - id: "product-ocr-false-negative-manual-review"
+    prompt: "OCR 结果 has_label_evidence=false，但 OCR 原文里有 Raw Material Composition / Additive Composition / Dry Matter Basis。"
+    expected:
+      risk: "OCR 假阴性复核"
+      must_include: ["不能只看布尔值", "OCR 原文", "原图", "Raw Material Composition", "Additive Composition", "Dry Matter Basis"]
+      forbidden: ["没有标签证据所以结束", "不用看原图", "忽略英文"]

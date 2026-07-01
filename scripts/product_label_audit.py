@@ -27,6 +27,12 @@ from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+
 LABEL_PATTERNS = [
     r"原料组成",
     r"配料(?:表)?",
@@ -54,6 +60,23 @@ LABEL_PATTERNS = [
     r"保质期",
     r"进口登记",
     r"备案",
+    r"raw\s+material\s+composition",
+    r"additive\s+composition",
+    r"dry\s+matter\s+basis",
+    r"ingredients?",
+    r"analytical\s+constituents?",
+    r"guaranteed\s+analysis",
+    r"composition",
+    r"crude\s+protein",
+    r"crude\s+fat",
+    r"crude\s+fiber",
+    r"crude\s+fibre",
+    r"crude\s+ash",
+    r"moisture",
+    r"taurine",
+    r"total\s+phosphorus",
+    r"phosphorus",
+    r"calcium",
 ]
 
 LABEL_RE = re.compile("|".join(LABEL_PATTERNS), re.I)
@@ -75,14 +98,28 @@ STRONG_LABEL_PATTERNS = [
     r"生产企业",
     r"进口登记",
     r"备案",
+    r"raw\s+material\s+composition",
+    r"additive\s+composition",
+    r"dry\s+matter\s+basis",
+    r"ingredients?",
+    r"analytical\s+constituents?",
+    r"guaranteed\s+analysis",
+    r"crude\s+protein",
+    r"crude\s+fat",
+    r"crude\s+fiber",
+    r"crude\s+fibre",
+    r"moisture",
+    r"taurine",
+    r"total\s+phosphorus",
+    r"calcium",
 ]
 
 STRONG_LABEL_RE = re.compile("|".join(STRONG_LABEL_PATTERNS), re.I)
 
 SOURCE_SCORE_PATTERNS = [
-    (re.compile(r"原料|配料|成分|保证值|背标|详情|包装|营养|标签|label", re.I), 6),
+    (re.compile(r"原料|配料|成分|保证值|背标|详情|包装|营养|标签|label|composition|ingredient|analysis|constituent", re.I), 6),
     (re.compile(r"主食|全价|猫饭|猫粮|餐盒|餐包|罐|猫条|湿粮", re.I), 3),
-    (re.compile(r"alicdn|360buyimg|jd|tmall|taobao|pdd|kua?nf[u]?|toptrees", re.I), 1),
+    (re.compile(r"alicdn|360buyimg|jd|tmall|taobao|pdd|shopee|lazada|amazon|susercontent|kua?nf[u]?|toptrees", re.I), 1),
 ]
 
 IMAGE_EXT_RE = re.compile(r"\.(?:jpg|jpeg|png|webp)(?:[?#].*)?$", re.I)
@@ -340,12 +377,21 @@ def search_queries(product_name: str) -> list[str]:
         "旗舰店",
         "买家晒图",
         "小红书 背标",
+        "Raw Material Composition",
+        "Additive Composition",
+        "Dry Matter Basis",
+        "Ingredients",
+        "Analytical constituents",
+        "Guaranteed analysis",
     ]
     return [f'"{base}" "{s}"' for s in suffixes] + [
         f'{base} site:detail.tmall.com',
         f'{base} site:item.jd.com',
         f'{base} site:yangkeduo.com',
         f'{base} site:xiaohongshu.com 配料',
+        f'{base} site:shopee.com composition',
+        f'{base} site:lazada.com composition',
+        f'{base} site:amazon.com ingredients',
     ]
 
 
