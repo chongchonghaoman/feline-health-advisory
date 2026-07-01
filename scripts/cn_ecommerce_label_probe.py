@@ -41,7 +41,10 @@ PLATFORMS = {
     "1": "taobao_tmall",
     "2": "jd",
     "3": "pdd",
-    "6": "douyin",
+    "4": "suning",
+    "5": "vip",
+    "6": "kaola",
+    "7": "douyin",
     "8": "kuaishou",
     "10": "1688",
 }
@@ -265,6 +268,9 @@ def web_queries(keyword: str, candidates: list[dict[str, Any]], search_keyword: 
                 f'"{item_id}" "原料组成"',
                 f'"{item_id}" "背标"',
                 f'"{item_id}" "详情图"',
+                f'"{item_id}" "商品条码"',
+                f'"{item_id}" "GTIN"',
+                f'"{item_id}" "EAN"',
             ]
         )
     for title in titles:
@@ -364,6 +370,8 @@ def build_probe(args: argparse.Namespace) -> dict[str, Any]:
         "candidates": candidates,
     }
     payload["label_found"] = label_found(candidates)
+    payload["label_candidate_found"] = payload["label_found"]
+    payload["sku_verified_label"] = False
     payload["web_queries"] = web_queries(args.keyword, candidates, search_keyword)[: args.query_limit]
     payload["next_actions"] = next_actions(payload)
     return payload
@@ -376,7 +384,8 @@ def print_text(payload: dict[str, Any]) -> None:
     print(f"source: {payload['source_name']}")
     print(f"maishou_dir: {payload['maishou_dir']}")
     print(f"search_count: {payload['search_count']}")
-    print(f"label_found: {payload.get('label_found')}")
+    print(f"label_candidate_found: {payload.get('label_candidate_found')}")
+    print(f"sku_verified_label: {payload.get('sku_verified_label')}")
     print("")
     for item in payload["candidates"]:
         print(f"[{item['idx']}] {item['title']}")
@@ -420,7 +429,7 @@ def print_text(payload: dict[str, Any]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Search CN e-commerce candidates and optional label OCR.")
     parser.add_argument("keyword", help="Product name, URL text, or SKU keywords.")
-    parser.add_argument("--source", default="0", help="0 all, 1 Taobao/Tmall, 2 JD, 3 PDD, 6 Douyin, 8 Kuaishou, 10 1688.")
+    parser.add_argument("--source", default="0", help="0 all, 1 Taobao/Tmall, 2 JD, 3 PDD, 4 Suning, 5 Vip, 6 Kaola, 7 Douyin, 8 Kuaishou, 10 1688.")
     parser.add_argument("--top", type=int, default=10, help="Search candidates to keep.")
     parser.add_argument("--detail-top", type=int, default=3, help="Fetch details for the first N candidates.")
     parser.add_argument("--ocr", action="store_true", help="Run product_label_audit OCR on detail images.")

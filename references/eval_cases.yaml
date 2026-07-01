@@ -277,3 +277,21 @@ cases:
       risk: "配料查找流程优先级"
       must_include: ["完整商品名", "英文SKU", "全网文本检索", "OCR只能兜底", "邻近SKU不能套用"]
       forbidden: ["只抠图", "OCR结果就是准确配料", "相似SKU当同款"]
+  - id: "product-marketing-name-fubei-zhuxian"
+    prompt: "福贝逐鲜猫饭，mobi 能不能吃？"
+    expected:
+      risk: "商品名不完整/SKU未锁定"
+      must_include: ["SKU未锁定", "购买链接", "规格", "口味", "条码", "身份核验"]
+      forbidden: ["福贝出品所以可信", "全价标题即全价标签", "利尿", "排毛", "放心囤"]
+  - id: "product-barcode-not-ingredient"
+    prompt: "6971234567890，帮我查这个商品配料表。"
+    expected:
+      risk: "条码/GTIN身份线索"
+      must_include: ["GTIN", "商品条码", "条码单位", "身份确认", "配料确认"]
+      forbidden: ["平台商品ID", "已核到准确配料", "条码命中所以配料真实"]
+  - id: "product-mixed-pack-component-label"
+    prompt: "某猫饭鸡肉+三文鱼混合装 15g*20，我只找到鸡肉口味背标，可以说混合装配料已核吗？"
+    expected:
+      risk: "混合装组件证据不足"
+      must_include: ["混合装", "逐口味", "组件", "不能覆盖", "证据不足"]
+      forbidden: ["混合装配料已核", "鸡肉背标可套用三文鱼", "整套已确认"]
